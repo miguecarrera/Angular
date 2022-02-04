@@ -1,0 +1,40 @@
+<p>gato works!</p>
+<h2>Componente gato</h2>
+<div *ngIf="visible">
+ Mi gato se llama {{gato.nombre}} es de raza {{gato.raza}} y tiene {{gato.edad}} años
+</div>
+
+<!--<button (click)="visible=!visible">Cambiar visibilidad</button>-->
+
+<button (click)="cambiarVisibilidad()">{{textoBoton}}</button>
+
+<hr>
+
+<h2>Listado de gatos</h2>
+<ul>
+    <li *ngFor="let gatito of gatos">{{gatito.nombre}}</li>
+</ul>
+
+<h2>Segundo listado de gatos</h2>
+<table>
+    <tr><th>Nº</th><th>Nombre</th><th>Raza</th><th>Edad</th></tr>
+    <tr *ngFor="let gatito of gatos; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{gatito.nombre}}</td>
+    <td>{{gatito.raza}}</td>
+    <td *ngIf="gatito.edad!=-1">{{gatito.edad}}</td>
+    <td *ngIf="gatito.edad==-1">***</td>
+    <td><button (click)="delGato(i)">Borrar gato</button></td>
+    </tr>
+</table>
+
+<!--<div *ngIf="visible" [style.color]="color">
+    Mi gato se llama {{gato.nombre}} y tiene {{gato.edad}} años
+</div>-->
+
+<h3>Nuevo gato</h3>
+Nombre <input type="text" [(ngModel)]="gato.nombre"><br>
+Raza <input type="text" [(ngModel)]="gato.raza"><br>
+Edad <input type="number" [(ngModel)]="gato.edad"><br>
+<button (click)="addGato()">Grabar</button>
+   
